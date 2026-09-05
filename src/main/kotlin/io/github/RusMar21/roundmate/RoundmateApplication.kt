@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class RoundmateApplication
 
 fun main(args: Array<String>) {
-	runApplication<RoundmateApplication>(*args)
+    runApplication<RoundmateApplication>(*args)
 }

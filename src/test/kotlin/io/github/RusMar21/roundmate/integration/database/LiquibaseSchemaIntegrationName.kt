@@ -9,21 +9,21 @@ import org.springframework.jdbc.core.JdbcTemplate
 class LiquibaseSchemaIntegrationName(
     private val jdbcTemplate: JdbcTemplate,
 ) {
-
     @Test
     fun `check schemas exists in db`() {
-        val schemas = jdbcTemplate.queryForList(
-            """
+        val schemas =
+            jdbcTemplate.queryForList(
+                """
                 SELECT schema_name 
                 FROM information_schema.schemata
-            """.trimIndent(),
-            String::class.java
-        )
+                """.trimIndent(),
+                String::class.java,
+            )
 
         assertThat(schemas).contains(
             "identity",
             "club",
-            "training"
+            "training",
         )
     }
 }
