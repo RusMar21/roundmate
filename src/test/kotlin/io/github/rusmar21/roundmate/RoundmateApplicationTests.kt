@@ -1,4 +1,4 @@
-package io.github.RusMar21.roundmate
+package io.github.rusmar21.roundmate
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

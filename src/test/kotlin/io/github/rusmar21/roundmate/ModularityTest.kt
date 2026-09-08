@@ -1,4 +1,4 @@
-package io.github.RusMar21.roundmate
+package io.github.rusmar21.roundmate
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Disabled

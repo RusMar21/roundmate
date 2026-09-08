@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.jpa") version "2.3.21"
 }
 
-group = "io.github.RusMar21"
+group = "io.github.rusmar21"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -61,6 +61,12 @@ dependencyManagement {
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
+    }
+}
+
+protobuf {
+    plugins {
+        create("grpc")
     }
 }
 
