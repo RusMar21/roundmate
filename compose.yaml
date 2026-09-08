@@ -5,8 +5,8 @@ services:
     image: "postgres:18"
     environment:
       POSTGRES_DB: roundmate
-      POSTGRES_USER: roundmate
-      POSTGRES_PASSWORD: roundmate
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
