@@ -1,5 +1,6 @@
-package io.github.RusMar21.roundmate
+package io.github.rusmar21.roundmate.arch
 
+import io.github.rusmar21.roundmate.RoundmateApplication
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test

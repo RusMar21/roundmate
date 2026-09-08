@@ -1,6 +1,6 @@
-package io.github.RusMar21.roundmate.integration.database
+package io.github.rusmar21.roundmate.integration.database
 
-import io.github.RusMar21.roundmate.annotations.IntegrationTest
+import io.github.rusmar21.roundmate.annotations.IntegrationTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.jdbc.core.JdbcTemplate

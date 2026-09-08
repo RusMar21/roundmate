@@ -4,10 +4,11 @@ plugins {
     id("org.springframework.boot") version "4.1.1"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.google.protobuf") version "0.9.6"
+    id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
     kotlin("plugin.jpa") version "2.3.21"
 }
 
-group = "io.github.RusMar21"
+group = "io.github.rusmar21"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -34,6 +35,7 @@ dependencies {
     implementation("org.springframework.modulith:spring-modulith-observability-api")
     implementation("org.springframework.modulith:spring-modulith-starter-core")
     implementation("org.springframework.modulith:spring-modulith-starter-jpa")
+    implementation("io.grpc:grpc-services")
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.springframework.modulith:spring-modulith-actuator")
     runtimeOnly("org.springframework.modulith:spring-modulith-observability-core")
@@ -64,6 +66,12 @@ kotlin {
     }
 }
 
+protobuf {
+    plugins {
+        create("grpc")
+    }
+}
+
 allOpen {
     annotation("jakarta.persistence.Entity")
     annotation("jakarta.persistence.MappedSuperclass")
@@ -72,4 +80,8 @@ allOpen {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.named("check") {
+    dependsOn(tasks.named("ktlintCheck"))
 }
