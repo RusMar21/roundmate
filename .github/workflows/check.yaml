@@ -27,3 +27,9 @@ jobs:
 
       - name: Run checks
         run: ./gradlew check
+
+      - name: validate Docker Compose
+        run: docker compose config --quiet
+
+      - name: Build Docker image
+        run: docker build --tag roundmate:ci .
