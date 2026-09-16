@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package roundmate.identity.v1;
+
+option java_multiple_files = true;
+option java_package = "io.github.rusmar21.roundmate.identity.api.grpc.generated";
+
+service IdentityService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+  string name = 3;
+  string surname = 4;
+}
+
+message RegisterResponse {
+  string account_id = 1;
+}
