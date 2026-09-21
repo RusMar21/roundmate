@@ -2,9 +2,10 @@ package io.github.rusmar21.roundmate.identity.domain.account.repository
 
 import io.github.rusmar21.roundmate.identity.domain.account.model.Account
 import io.github.rusmar21.roundmate.identity.domain.account.model.AccountId
-import org.springframework.stereotype.Repository
+import io.github.rusmar21.roundmate.identity.domain.account.model.Email
 
-@Repository
 interface AccountRepository {
-    fun findById(accountID: AccountId): Account?
+    suspend fun findByEmail(email: Email): Account?
+
+    suspend fun save(account: Account): AccountId
 }

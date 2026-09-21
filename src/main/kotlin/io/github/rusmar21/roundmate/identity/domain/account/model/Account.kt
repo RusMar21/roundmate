@@ -1,7 +1,7 @@
 package io.github.rusmar21.roundmate.identity.domain.account.model
 
 data class Account(
-    val accountId: AccountId,
+    val accountId: AccountId? = null,
     val email: Email,
     val name: String,
     val surname: String,
