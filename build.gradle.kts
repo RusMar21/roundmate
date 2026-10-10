@@ -37,6 +37,7 @@ dependencies {
     implementation("org.springframework.modulith:spring-modulith-starter-jpa")
     implementation("io.github.oshai:kotlin-logging-jvm:8.0.4")
     implementation("io.grpc:grpc-services")
+    implementation("com.password4j:password4j:1.8.4")
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.springframework.modulith:spring-modulith-actuator")
     runtimeOnly("org.springframework.modulith:spring-modulith-observability-core")

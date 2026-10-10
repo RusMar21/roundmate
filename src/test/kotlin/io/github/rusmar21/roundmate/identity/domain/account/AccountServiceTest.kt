@@ -59,7 +59,7 @@ class AccountServiceTest(
             val savedAccount = accountCaptor.firstValue
             assertThat(savedAccount.accountId).isNull()
             assertThat(savedAccount.email.email).isEqualTo("coach@example.com")
-            assertThat(savedAccount.passwordHash.hash).isEqualTo("strong-password")
+            assertThat(savedAccount.passwordHash.hash).isNotEmpty()
             assertThat(savedAccount.name).isEqualTo("Ivan")
             assertThat(savedAccount.surname).isEqualTo("Ivanov")
             assertThat(savedAccount.status).isEqualTo(AccountStatus.ACTIVE)
