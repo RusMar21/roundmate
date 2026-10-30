@@ -20,7 +20,7 @@ class AccountService(
     private val passwordHasher: PasswordHasher,
     private val passwordValidator: PasswordValidator,
 ) {
-    suspend fun registerAccount(registerAccountRequest: RegisterAccountRequest): AccountId {
+    fun registerAccount(registerAccountRequest: RegisterAccountRequest): AccountId {
         val email = Email.from(registerAccountRequest.email)
         checkEmailIsAvailable(email)
         val normalizeName = registerAccountRequest.name.normalizeAndValidate()
@@ -39,7 +39,7 @@ class AccountService(
         return accountId
     }
 
-    private suspend fun checkEmailIsAvailable(email: Email) =
+    private fun checkEmailIsAvailable(email: Email) =
         require(accountRepository.findByEmail(email) == null) {
             throw AccountAlreadyExistsException()
         }

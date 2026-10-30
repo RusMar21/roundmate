@@ -5,7 +5,7 @@ import io.github.rusmar21.roundmate.identity.domain.account.model.AccountId
 import io.github.rusmar21.roundmate.identity.domain.account.model.Email
 
 interface AccountRepository {
-    suspend fun findByEmail(email: Email): Account?
+    fun findByEmail(email: Email): Account?
 
-    suspend fun save(account: Account): AccountId
+    fun save(account: Account): AccountId
 }

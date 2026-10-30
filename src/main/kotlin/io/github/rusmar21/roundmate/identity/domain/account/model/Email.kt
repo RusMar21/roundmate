@@ -8,7 +8,7 @@ private val EMAIL_PATTERN = Regex("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")
 
 @JvmInline
 value class Email(
-    val email: String,
+    val value: String,
 ) {
     companion object {
         fun from(emailString: String): Email {
