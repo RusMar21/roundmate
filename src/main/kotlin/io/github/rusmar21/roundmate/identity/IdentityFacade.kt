@@ -9,5 +9,5 @@ import org.springframework.stereotype.Component
 class IdentityFacade(
     private val accountService: AccountService,
 ) {
-    suspend fun registerAccount(request: RegisterAccountRequest): AccountId = accountService.registerAccount(request)
+    fun registerAccount(request: RegisterAccountRequest): AccountId = accountService.registerAccount(request)
 }
