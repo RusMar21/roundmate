@@ -1,6 +1,5 @@
 package io.github.rusmar21.roundmate.annotations
 
-import io.github.rusmar21.roundmate.configuration.GrpcTestConfiguration
 import io.github.rusmar21.roundmate.configuration.TestcontainersConfiguration
 import org.springframework.boot.grpc.test.autoconfigure.AutoConfigureTestGrpcTransport
 import org.springframework.boot.test.context.SpringBootTest
@@ -9,7 +8,6 @@ import org.springframework.core.annotation.AliasFor
 import org.springframework.grpc.client.CoroutineStubFactory
 import org.springframework.grpc.client.ImportGrpcClients
 import org.springframework.test.context.TestConstructor
-import org.springframework.test.context.TestPropertySource
 import org.springframework.test.context.jdbc.Sql
 import kotlin.reflect.KClass
 
@@ -17,15 +15,10 @@ import kotlin.reflect.KClass
 @Retention(AnnotationRetention.RUNTIME)
 @SpringBootTest
 @AutoConfigureTestGrpcTransport
-@Import(TestcontainersConfiguration::class, GrpcTestConfiguration::class)
+@Import(TestcontainersConfiguration::class)
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 @ImportGrpcClients(
     factory = CoroutineStubFactory::class,
-)
-@TestPropertySource(
-    properties = [
-        "spring.grpc.server.health.enabled=true",
-    ],
 )
 @Sql(
     scripts = ["classpath:sql/truncate_tables.sql"],
