@@ -58,7 +58,7 @@ jobs:
         run: |
           docker run --rm \
           --network host \
-          ghcr.io/grpc-ecosystem/grpc-health-probe:v.0.4.60 \
+          ghcr.io/grpc-ecosystem/grpc-health-probe:v0.4.57 \
           -addr=localhost:9090
 
       - name: Show logs on failure
