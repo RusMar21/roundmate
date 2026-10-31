@@ -53,7 +53,7 @@ jobs:
 
       - name: Show services
         run: |
-          docker compose ps \
+          docker compose ps
           nc -vz 127.0.0.1 9090
 
       - name: grpc health check
