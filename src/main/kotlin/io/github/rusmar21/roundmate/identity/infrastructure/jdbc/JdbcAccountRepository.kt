@@ -24,6 +24,14 @@ class JdbcAccountRepository(
                 accountRowMapper,
             ).firstOrNull()
 
+    override fun findById(id: AccountId): Account? =
+        jdbcTemplate
+            .query(
+                "SELECT id, status, email, name, surname, password_hash FROM identity.account WHERE id = :id".trimIndent(),
+                mapOf("id" to id.value),
+                accountRowMapper,
+            ).firstOrNull()
+
     override fun save(account: Account): AccountId {
         val id =
             jdbcTemplate.queryForObject(
