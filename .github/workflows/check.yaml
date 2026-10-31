@@ -52,9 +52,7 @@ jobs:
         run: docker compose up --build --wait --wait-timeout 180
 
       - name: Show services
-        run: |
-          docker compose ps
-          nc -vz 127.0.0.1 9090
+        run: docker compose ps
 
       - name: Show logs on failure
         if: failure()
