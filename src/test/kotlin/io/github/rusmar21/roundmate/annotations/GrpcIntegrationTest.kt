@@ -6,9 +6,11 @@ import org.springframework.boot.grpc.test.autoconfigure.AutoConfigureTestGrpcTra
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
 import org.springframework.core.annotation.AliasFor
+import org.springframework.grpc.client.CoroutineStubFactory
 import org.springframework.grpc.client.ImportGrpcClients
 import org.springframework.test.context.TestConstructor
 import org.springframework.test.context.TestPropertySource
+import org.springframework.test.context.jdbc.Sql
 import kotlin.reflect.KClass
 
 @Target(AnnotationTarget.CLASS)
@@ -17,11 +19,17 @@ import kotlin.reflect.KClass
 @AutoConfigureTestGrpcTransport
 @Import(TestcontainersConfiguration::class, GrpcTestConfiguration::class)
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
-@ImportGrpcClients
+@ImportGrpcClients(
+    factory = CoroutineStubFactory::class,
+)
 @TestPropertySource(
     properties = [
         "spring.grpc.server.health.enabled=true",
     ],
+)
+@Sql(
+    scripts = ["classpath:sql/truncate_tables.sql"],
+    executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD,
 )
 annotation class GrpcIntegrationTest(
     @get:AliasFor(

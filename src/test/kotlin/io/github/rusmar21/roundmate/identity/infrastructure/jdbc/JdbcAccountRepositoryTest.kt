@@ -19,7 +19,7 @@ class JdbcAccountRepositoryTest(
         val accountId = accountRepository.save(ACCOUNT)
         val savedAccount = accountRepository.findByEmail(ACCOUNT.email)
 
-        assertThat(savedAccount?.accountId?.id).isEqualTo(accountId.id)
+        assertThat(savedAccount?.accountId?.value).isEqualTo(accountId.value)
     }
 
     @Test

@@ -11,6 +11,8 @@ plugins {
 group = "io.github.rusmar21"
 version = "0.0.1-SNAPSHOT"
 
+val grpcKotlinVersion = "1.5.0"
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(25)
@@ -37,6 +39,8 @@ dependencies {
     implementation("org.springframework.modulith:spring-modulith-starter-jpa")
     implementation("io.github.oshai:kotlin-logging-jvm:8.0.4")
     implementation("io.grpc:grpc-services")
+    implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
     implementation("com.password4j:password4j:1.8.4")
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.springframework.modulith:spring-modulith-actuator")
@@ -70,16 +74,27 @@ kotlin {
     }
 }
 
-protobuf {
-    plugins {
-        create("grpc")
+ktlint {
+    filter {
+        exclude("**/generated/**")
     }
 }
 
-allOpen {
-    annotation("jakarta.persistence.Entity")
-    annotation("jakarta.persistence.MappedSuperclass")
-    annotation("jakarta.persistence.Embeddable")
+protobuf {
+    plugins {
+        create("grpc")
+        create("grpckt") {
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:$grpcKotlinVersion:jdk8@jar"
+        }
+    }
+
+    generateProtoTasks {
+        all().forEach { task ->
+            task.plugins {
+                create("grpckt")
+            }
+        }
+    }
 }
 
 tasks.withType<Test> {

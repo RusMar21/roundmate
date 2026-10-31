@@ -1,4 +1,4 @@
-package io.github.rusmar21.roundmate.identity
+package io.github.rusmar21.roundmate.identity.facade
 
 import io.github.rusmar21.roundmate.identity.domain.account.AccountService
 import io.github.rusmar21.roundmate.identity.domain.account.model.AccountId
