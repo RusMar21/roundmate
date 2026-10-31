@@ -56,7 +56,7 @@ jobs:
 
       - name: grpc health check
         run: |
-          docker run -rm \
+          docker run --rm \
           --network host \
           ghcr.io/grpc-ecosystem/grpc-health-probe:v.0.4.60 \
           -addr=localhost:9090
